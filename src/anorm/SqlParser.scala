@@ -91,7 +91,7 @@ object RowParser {
 trait RowParser[+A] extends (Row => SqlResult[A]) { parent => // self type used for this aliasing
 
   /**
-   * Transform SqlResult[A] to SqlResult[B]
+   * Transform RowParser[A] to RowParser[B]
    * RowParser's apply takes a f:Row => SqlResult[A] and parent IS-A Row => SqlResult[A], we can use a function
    * takes a SqlResult[A] returns a SqlResult[B], that's exactly what the map function in SqlResult does.
    * So just do a composition the _ in the second function is a inferred a type, means the result of the first function.

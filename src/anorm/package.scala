@@ -1,14 +1,8 @@
 
 /**
- * Anorm API
  *
- * Use the SQL method to start an SQL query
+ * a package object defines package-wide utility methods and implicit conversions and type aliases
  *
- * {{{
- * import anorm._
- *
- * SQL("Select 1")
- * }}}
  */
 package object anorm {
 
@@ -20,6 +14,17 @@ package object anorm {
   implicit def toParameterValue[A](a: A)(implicit p: ToStatement[A]): ParameterValue[A] =
     ParameterValue(a, p)
 
+  /**
+   * Use the SQL method to start an SQL query
+   *
+   * {{{
+   * import anorm._
+   *
+   * SQL("Select 1")
+   * }}}
+   * @param stmt
+   * @return
+   */
   def SQL(stmt: String) = Sql.sql(stmt)
 
 }
